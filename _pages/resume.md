@@ -51,7 +51,7 @@ Machine Learning, Pattern Recognition, Computer Vision, Neural Networks , Artifi
 
  - Libraries:			 	        scikit-learn, XGBoost, Caffe, Tensorflow, Keras
 
- - Software & Tools: 		    Github, Linux, Heroku, Vim, etc.
+ - Software & Tools: 		    Linux, Github, Docker, Heroku, Vim, etc.
 
 
 

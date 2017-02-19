@@ -36,3 +36,5 @@ include: ['_pages']
 exclude:
   - Gemfile
   - Gemfile.lock
+disqus:
+  shortname: jihongju-github-io
