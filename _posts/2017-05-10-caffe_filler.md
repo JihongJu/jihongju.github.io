@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Caffe weights initializations"
+title:  "Caffe initialization methods"
 categories: ML
 ---
 
