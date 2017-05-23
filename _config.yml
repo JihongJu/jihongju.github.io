@@ -16,7 +16,7 @@
 title: Jihong's learning blog
 email: daniel.jihongju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  It is all about what I have learned from how machine 「learns」.
+  What do I learn from how machine「learns」?
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:   jihongju
