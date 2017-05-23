@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bayesian inference"
-<!-- categories: ML -->
+author: "Jihong"
 ---
 
 ### Bayes Rule
