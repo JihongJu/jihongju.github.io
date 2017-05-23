@@ -53,7 +53,7 @@ layer {
 }
 ```
 
-Caffe uses `weight_filler` to indicate the initialization method for the weights and `bias_filler` to indicate the initial filling method for the bias.
+Caffe uses `weight_filler` to indicate the initializer being used for the weights and `bias_filler` for the bias.
 
 ## On defining nets with Pycaffe
 
@@ -80,7 +80,7 @@ Now you may want to know what are these fillers and how do I know which one is a
 
 # Caffe Initializers
 
-All the weight/bias fillers available in Caffe with descriptive docstring can be found at in the [header file](https://github.com/BVLC/caffe/blob/master/include/caffe/filler.hpp)
+Source codes, together with brief docstring, of all the weight/bias fillers can be found at in the [filler.hpp](https://github.com/BVLC/caffe/blob/master/include/caffe/filler.hpp)
 
 This section aims at briefly introducing the idea accompanied with the different initialization methods.
 

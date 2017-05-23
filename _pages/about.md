@@ -4,9 +4,9 @@ title: About
 permalink: /about/
 ---
 
-For both machines and human, it is crucial to monitor where I am while learning.
+For both machines and human, it is crucial to monitor the current stage of learning.
 
-The motivation of the blog is to apply version control on my knowledge about machine learning. The idea is to quickly iterate my knowledge starting from simple and straightforward concepts towards complex but organized graphs.
+The motivation of the blog is to apply version control to my knowledge about machine learning. The idea is to quickly iterate my knowledge starting from simple and straightforward concepts towards complex but organized graphs.
 
 Mistakes and bugs are therefore inevitable. You are more than welcome to contact me by either leaving a message in the bottom of the blogs or [sending me an email](mailto:daniel.jihong.ju@gmail.com)
 
