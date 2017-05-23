@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Bayesian inference"
-categories: ML
+<!-- categories: ML -->
 ---
 
 ### Bayes Rule

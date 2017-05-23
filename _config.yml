@@ -13,26 +13,32 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Jihong's learning blog
+title: Learning machines
 email: daniel.jihongju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  What do I learn from how machine「learns」?
+  What do I learn from how machine「learns」.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:   jihongju
 linkedin_username: jihong-ju-a2305585
 twitter_username:  jujihong
+email_username: daniel.jihong.ju@gmail.com
 
 timezone: Europe/Amsterdam
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima
+highlighter: rouge
+permalink: pretty
+paginate: 5
 gems:
   - jekyll-feed
+  - jekyll-paginate
 sass:
   sass_dir: _sass
-include: ['_pages']
+include:
+  - _pages
 exclude:
   - Gemfile
   - Gemfile.lock
