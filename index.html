@@ -1,6 +1,6 @@
 ---
 layout: page
-description: Machines do end learning but a human does not..
+description: Machines will end learning yet human won't.
 ---
 
 {% for post in paginator.posts %}
@@ -14,7 +14,7 @@ description: Machines do end learning but a human does not..
         </h3>
         {% endif %}
     </a>
-    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
+    <p class="post-meta">Post by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
 </div>
 <hr>
 {% endfor %}
