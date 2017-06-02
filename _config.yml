@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Learning machines
-header-img: "img/home-bg.jpg"
+header-img: "img/bot-framework-overview-concepts.svg"
 email: daniel.jihongju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   What do I learn from how machine「learns」.
