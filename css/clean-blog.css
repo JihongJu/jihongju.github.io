@@ -15,7 +15,6 @@ p {
 }
 p a {
   text-decoration: none;
-  color: blue;
 }
 h1 {
   font-size: 32px;
@@ -41,9 +40,6 @@ h6 {
   font-size: 12px;
   font-weight: 800;
 }
-a {
-  color: #404040;
-}
 a:hover,
 a:focus {
   color: #0085a1;
@@ -53,9 +49,22 @@ a img:focus {
   cursor: zoom-in;
 }
 blockquote {
-  color: #808080;
-  font-style: italic;
+  /*color: #808080;*/
+  /*font-style: italic;*/
 }
+/*code {
+  padding: 2px 5px;
+  background: #fff;
+  border: solid 1px #e1e4e5;
+  color: #333;
+ }
+ pre code {
+   background: transparent;
+   border: none;
+ }
+ a code {
+   color: #2FA4E7;
+ }*/
 hr.small {
   max-width: 100px;
   margin: 15px auto;
