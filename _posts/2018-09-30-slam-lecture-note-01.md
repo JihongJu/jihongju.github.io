@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  "Introduction to Robotic Mapping"
-author: "Cyrill Stachniss's SLAM course"
+title:  Introduction to Robotic Mapping
+author: Cyrill Stachniss's SLAM course
+
 ---
 
 ## Related terms
