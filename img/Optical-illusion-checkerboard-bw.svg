@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 1040 780" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs><path id="V" d="M0,0V780M80,0V780"/>
+<g id="V1"><use xlink:href="#V"/><use x="320" xlink:href="#V"/>
+<use x="640" xlink:href="#V"/><use x="960" xlink:href="#V"/></g>
+<g id="V2"><use x="160" xlink:href="#V"/><use x="480" xlink:href="#V"/>
+<use x="800" xlink:href="#V"/></g>
+<path id="H" d="M0,0H1040M0,60H1040"/>
+<g id="H1"><use xlink:href="#H"/><use y="240" xlink:href="#H"/>
+<use y="480" xlink:href="#H"/><use y="720" xlink:href="#H"/></g>
+<g id="H2"><use y="120" xlink:href="#H"/><use y="360" xlink:href="#H"/>
+<use y="600" xlink:href="#H"/></g></defs>
+<g id="Rw"><g id="Ck"><rect id="X1" width="80" height="60" fill="#ffffff"/>
+<rect id="X2" width="80" height="60" y="60"/><rect id="Y1" width="80" height="60" x="80"/>
+<rect width="80" height="60" x="80" y="60" fill="#ffffff"/></g>
+<use x="160" xlink:href="#Ck"/><use x="320" xlink:href="#Ck"/>
+<use x="480" xlink:href="#Ck"/><use x="640" xlink:href="#Ck"/>
+<use x="800" xlink:href="#Ck"/>
+<use x="960" xlink:href="#X1"/><use x="960" xlink:href="#X2"/></g>
+<use y="120" xlink:href="#Rw"/><use y="240" xlink:href="#Rw"/>
+<use y="360" xlink:href="#Rw"/><use y="480" xlink:href="#Rw"/>
+<use y="600" xlink:href="#Rw"/>
+<g id="Lst"><use y="720" xlink:href="#X1"/><use y="720" xlink:href="#Y1"/></g>
+<use x="160" xlink:href="#Lst"/><use x="320" xlink:href="#Lst"/>
+<use x="480" xlink:href="#Lst"/><use x="640" xlink:href="#Lst"/>
+<use x="800" xlink:href="#Lst"/>
+<use x="960" y="720" xlink:href="#X1"/>
+<g fill="none" stroke-width="6">
+<use xlink:href="#H1"/><use xlink:href="#H2"/>
+<g stroke="#ffffff" stroke-dasharray="80">
+<use stroke-dashoffset="120" xlink:href="#H1"/>
+<use stroke-dashoffset="40" xlink:href="#H2"/></g>
+<use xlink:href="#V1"/><use xlink:href="#V2"/>
+<g stroke="#ffffff" stroke-dasharray="60">
+<use stroke-dashoffset="30" xlink:href="#V1"/>
+<use stroke-dashoffset="90" xlink:href="#V2"/></g></g></svg>

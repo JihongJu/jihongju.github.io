@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "Blog Null"
-header-img: "img/bot-framework-overview-concepts.svg"
+header-img: "img/Optical-illusion-checkerboard-bw.svg"
 email: daniel.jihongju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     "Null".
@@ -33,7 +33,7 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 paginate: 5
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
 sass:
