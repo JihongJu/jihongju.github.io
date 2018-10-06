@@ -28,13 +28,13 @@ p(x) = N
 The marginals are Gaussians
 
 \[
-p(x_a)=N \\
+p(x_a)=N \\\
 p(x_b)=N
 \]
 
 The conditions are also Gaussians
 \[
-p(x_a|x_b) = N \\
+p(x_a|x_b) = N \\\
 p(x_b|x_a) = N
 \]
 
@@ -75,19 +75,28 @@ p (x_t | x_{t-1}, u_t) = \eta \exp ( - \frac{1}{2} (x_t - A_t x_{t-1} - B_t u_t)
 
 
 \[
-p(zt | xt) = \eta \exp( - \frac{1}{2} ( z_t - C_t x_t )^T Q_t^{-1} ( z_t - C_t x_t ) )
+p(z_t | x_t) = \eta \exp( - \frac{1}{2} ( z_t - C_t x_t )^T Q_t^{-1} ( z_t - C_t x_t ) )
 \]
 
 
 ### Kalman FIlter Algorithm
 
 
-```
-Kalmanfilter()
-```
+Given \( \mu_{t-1}, \Sigma_{t-1}, u_t, z_t \)
+
+\[ 
+\bar \mu_t = A_t \mu_{t-1} + B_t u_t \\\
+\bar \Sigma_t = A_t \Sigma_{t-1} A_t^T + R_t \\\
+K_t = \bar \Sigma_t C_t^T ( C_t \bar \Sigma_t C_t^T + Q_t)^{-1} \\\
+\mu_t = \bar \mu_t + K_t (z_t - C_t \bar \mu_t ) \\\
+\Sigma_t = ( I - K_t C_t ) \bar \Sigma_t
+\]
+
+Return \( \mu_t, \Sigma_t \)
 
 
-Note: Production of Gaussians: weighted mean
+
+Note: Production of Gaussians is intuitively weighted mean
 
 
 ## Extended Kalman Filter
@@ -110,25 +119,59 @@ with Jacobian Matix \( G_t \) and \( H_t \)
 
 Prediction:
 \[
-g(u_t, x_{t-1}) = g(u_t, \mu_{t-1}) + \frac{\partial g(u_t, \mu_{t-1})}{\partial x_{t-1}} (x_{t-1} - \mu_{t-1})
+g(u_t, x_{t-1}) \approx g(u_t, \mu_{t-1}) + \frac{\partial g(u_t, \mu_{t-1})}{\partial x_{t-1}} (x_{t-1} - \mu_{t-1})
 \]
 
 
 Correction:
 \[
-h(x_t) = h(\bar{\mu}_t) + \frac{\partial h(\bar{\mu}_t)} {\partial x_t} (x_t - \bar{\mu}_t)
+h(x_t) \approx h(\bar{\mu}_t) + \frac{\partial h(\bar{\mu}_t)} {\partial x_t} (x_t - \bar{\mu}_t)
 \]
 
 
 ### Linearized motion
 
+\[
+p( x_t \vert x_{t-1}, u_t ) \approx \eta \exp( - \frac{1}{2} ( x_t - g(\mu_{t01}, u_t) -G_t(x_{t-1} - \mu_{t-1}) )^T R_t^{-1}  ( x_t - g(\mu_{t01}, u_t) -G_t(x_{t-1} - \mu_{t-1}) ))
+\]
+
+where \[ ( x_t - g(\mu_{t01}, u_t) -G_t(x_{t-1} - \mu_{t-1}) ) \] is the linearized motion model,
+
+\( R_t \) is the noise of the motion.
+
 ### Linearized observation
+
+\[
+p(z_t \vert x_t) \approx \eta \exp( - \frac{1}{2} (z_t - h(\bar \mu_t) - H_t(x_t - \bar \mu_t))^T Q_t^{-1}  (z_t - h(\bar \mu_t) - H_t(x_t - \bar \mu_t) ))
+\]
+
+where \[ (z_t - h(\bar \mu_t) - H_t(x_t - \bar \mu_t)) \] is the linearized observation model,
+
+\( Q_t \) describes the measurement noise.
 
 ### Extended Kalman Filter Algorithm
 
-```
-ExtendedKalmanfilter()
-```
+
+Given \( \mu_{t-1}, \Sigma_{t-1}, u_t, z_t \)
+
+\[ 
+\bar \mu_t = g(\mu_{t-1}, u_t) \\\
+\bar \Sigma_t = G_t \Sigma_{t-1} G_t^T + R_t \\\
+K_t = \bar \Sigma_t H_t^T ( H_t \bar \Sigma_t H_t^T + Q_t)^{-1} \\\
+\mu_t = \bar \mu_t + K_t (z_t - h_t (\bar \mu_t ) \\\
+\Sigma_t = ( I - K_t H_t ) \bar \Sigma_t
+\]
+
+Return \( \mu_t, \Sigma_t \)
+
+
+### KF vs. EKF
+\[
+A_t \Leftrightarrow K_t \\\
+C_t \Leftrightarrow H_t
+\]
+
+\( K_t, H_t \) need to be re-computed at each step.
 
 
  - Works well in practice with moderate non-linearities
