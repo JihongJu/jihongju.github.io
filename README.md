@@ -1,6 +1,5 @@
 # jihongju.github.io
-
-This is the source code for my personal blog about machine learning. The blog is up on https://jihongju.github.io/.
+The source code of my personal blog. The blog is up on https://jihongju.github.io/.
 
 
 ### Installation
