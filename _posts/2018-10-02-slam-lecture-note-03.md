@@ -46,7 +46,7 @@ With again Markov assumption
 = \eta p(z_t | x_t) \int_{x_{t-1}} p(x_t | x_{t-1}, u_t) p(x_{t-1} | z_{1:t-1}, u_{1:t}) dx_{t-1}
 \]
 
-With the assumption the current state $x_{t}$ is independent of the future controls \( u_{t+1} \)
+With the assumption the current state \( x_{t} \) is independent of the future controls \( u_{t+1} \)
 \[
 = \eta p(z_t | x_{t}) \int_{x_{t-1}} p(x_t | x_{t-1}, u_t) p(x_{t-1} | z_{1:t-1}, u_{1:t-1}) dx_{t-1} \\\
 = \eta p(z_t | x_{t}) \int_{x_{t-1}} p(x_t | x_{t-1}, u_t) bel(x_{t-1}) dx_{t-1}
@@ -120,7 +120,7 @@ Probability Dist
 
 ### Velocity-based
 
-$(x, y, \theta)$ to $(x', y', \theta')$ with translation velocity v and rotation velocity w. 
+\( (x, y, \theta) \) to \( (x', y', \theta') \) with translation velocity v and rotation velocity w. 
 
 
  - Problem: No arc could describe \( \theta' \neq \theta \)
@@ -162,7 +162,10 @@ Range-Bearing
 z_t^i = (r_t^i, \phi_t^i)^T
 \]
 
-Robot's pose \( (x, y, \theta) ^ T \)
+Robot's pose 
+\[
+(x, y, \theta)^T
+\]
 
 Observation of feature j at location \( (m_{j,x}, m_{j,y}) \)
 
