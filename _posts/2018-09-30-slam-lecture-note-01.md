@@ -46,10 +46,10 @@ $$
 To represents the uncertainty
 
 $$
-p(x_{0:T}, m | z_{1:t}, u_{1:t})
+p(x_{0:T}, m | z_{1:T}, u_{1:T})
 $$
 
-#TODO A graphic model diagram for the observed and unknowns
+![Graphical model of full SLAM](https://www.dropbox.com/s/vipk6ya0u74xnbs/full-slam.png?dl=1)
 
 Online SLAM seeks to recover only the most recent pose
 
@@ -57,7 +57,7 @@ $$
 p(x_{t}, m | z_{1:t}, u_{1:t})
 $$
 
-#TODO A graphic model diagram for the observed and unknowns
+![Graphical model of online SLAM](https://www.dropbox.com/s/zcl4egxe6trgx1i/online-slam.png?dl=1)
 
 $$
 p(x_{t}, m | z_{1:t}, u_{1:t}) = \int_{x_0} ... \int_{x_{t-1}} p(x_{0:t}, m | z_{1:t}, u_{1:t}) dx_{t-1} ... dx_{0}

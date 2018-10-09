@@ -118,12 +118,14 @@ Solution: Local linearization
 with Jacobian Matix $ G_t $ and $ H_t $
 
 Prediction:
+
 $$
 g(u_t, x_{t-1}) \approx g(u_t, \mu_{t-1}) + \frac{\partial g(u_t, \mu_{t-1})}{\partial x_{t-1}} (x_{t-1} - \mu_{t-1})
 $$
 
 
 Correction:
+
 $$
 h(x_t) \approx h(\bar{\mu}_t) + \frac{\partial h(\bar{\mu}_t)} {\partial x_t} (x_t - \bar{\mu}_t)
 $$
