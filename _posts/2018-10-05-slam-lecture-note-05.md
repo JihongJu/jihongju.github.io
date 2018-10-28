@@ -118,34 +118,34 @@ $$
 \end{pmatrix}
 $$
 
-## EKF SLAM: Filter Cycle
+# EKF SLAM: Filter Cycle
 
-### State prediction (P step)
+## 1. State prediction (P step)
 
 Predict the expected robot state.
 
-Robot is supposed to only change its own position and not the position of the landmarks, so the part of the state changes:
+ - Robot is supposed to only change its own position and not the position of the landmarks, so the part of the state changes:
 $x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
 
-The computation complexity $O(n)$
+ - The computation complexity $O(n)$
 
 
-### Measurement prediction (C step)
+## 2. Measurement prediction (C step)
 
 Predict the expected measurement given the belief of the robot state.
 $\mu_m$ , $\Sigma_{mm}$
 
-### Measurement (C step)
+## 3. Measurement (C step)
 
 Take the real measurement
 
-### Data association (C step)
-
-Associate the obtained measurement (of the landmarks) with the corresponding predicted landmark observation.
+## 4. Data association (C step)
 
 (Assumed to be given, but could be difficult in practice.)
 
-### Update (C step)
+Associate the obtained measurement (of the landmarks) with the corresponding predicted landmark observation.
+
+## 5. Update (C step)
 
 Compute the difference between the obtained measurement and the predicted measurement, and update the state (mean and covariance matrix) via the Kalman Gain
 
@@ -154,9 +154,9 @@ The complete mean and covariance changes
 The computation complexity $O(n^2)$
 
 
-## EKF SLAM: Concrete Example
+# EKF SLAM: Concrete Example
 
-### Setup
+## Setup
  - Robot moves in the 2D plane
  - Velocity-based motion model
  - Robot observes point landmarks
@@ -164,12 +164,11 @@ The computation complexity $O(n^2)$
  - Known data association
  - Known number of landmarks 
 
-### Robot motion
+## Robot motion
 
 Standard Odometry Model in 2D
 
 $$
-
 \begin{pmatrix}
 x' \\
 y' \\
@@ -188,12 +187,10 @@ y \\
 \frac{v_t}{w_t} \cos\theta - \frac{v_t}{w_t} \sin\theta \\
 w_t \Delta t
 \end{pmatrix}
-
-
 $$
 
 
-### Range-Bearing Observation
+## Range-Bearing Observation
 
 Standard Odometry Model in 2D with range-beraing observation $z_t^i = (r_t^i, \phi_t^i)^T$
 
@@ -217,7 +214,7 @@ r_t^i \sin(\phi_t^i + \bar \mu_{t, \theta}) \\
 $$
 
 
-### State Initializaion
+## State Initializaion
 
  - 2n+3 dimensions state (Robot pose + n landmarks)
  - Robot starts in its own reference frame (all n landmarks unknown)
@@ -235,7 +232,6 @@ $$
 
 $$
 \Sigma_0 = 
-
 \begin{pmatrix}
 0 & 0 & 0 & 0 & \ldots & 0 \\
 0 & 0 & 0 & 0 & \ldots & 0 \\
@@ -253,7 +249,7 @@ $$
 
 ![EKF SLAM Correction Step 2](https://www.dropbox.com/s/r2mbbg9i25fjiih/ekf_slam_correction_2.png?dl=1)
 
-#### Implementation Notes
+## Implementation Notes
  - Measurement update in a single step requires only one full belief update 
  - Always normalize the angular components
  - You may not need to create the matrices $ F $  explicitly (e.g., in Octave)
