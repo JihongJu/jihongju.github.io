@@ -1,26 +1,32 @@
 ---
 layout: post
 title: EKF SLAM
-author: Cyrill Stachniss's SLAM course
+author: Cyrill Stachniss SLAM course
 
 ---
 
-## SLAM
+* TOC 
+{:toc}
+
+# SLAM
 
 (S)multaneanously building a (m)ap of the world (a)nd (l)ocalizing the robot in the map
 
-### Definition
+## Definition
 
-Given robot controls $u_{1:T}$ and observations $z_{1:T}$, return a map $m$ and robot paths $x_{0:T}$ 
+Given the robot controls $u_{1:T}$ and observations $z_{1:T}$, return a map of the world $m$ and the robot paths $x_{0:T}$ 
 
-### Three Main Paradigms
+## Three Main Paradigms
+#TODO ref to the other posts
  - Kalman filter
  - Particle filter
  - Graph-based
 
 
-### [Recap](https://jihongju.github.io/2018/10/02/slam-lecture-note-03/): Bayes Filter 
-Recursive filter with 
+## Bayes Filter ([Recap](https://jihongju.github.io/2018/10/02/slam-lecture-note-03/))
+
+Recursive filter for state estimation with 
+
  - Prediction step
 
 $$
@@ -34,9 +40,12 @@ bel(x_t) = p(z_t \vert x_t) \bar{bel}(x_t)
 $$
 
 
-## EKF for Online SLAM
+# EKF for Online SLAM
 
-Online SLAM:
+Apply EKF on SLAM to estimate the robot pose and the landmarks location in the environment.
+
+
+## Online SLAM (Recap)
 
 $$
 p(x_t, m \vert z_{1:t}, u_{1:t})
@@ -46,42 +55,21 @@ $$
 ![Graphical model of online SLAM](https://www.dropbox.com/s/zcl4egxe6trgx1i/online-slam.png?dl=1)
 
 
-### [Recap](https://jihongju.github.io/2018/10/04/slam-lecture-note-04/#extended-kalman-filter-algorithm): EKF Algorithm
+## EKF Algorithm ([Recap](https://jihongju.github.io/2018/10/04/slam-lecture-note-04/#extended-kalman-filter-algorithm))
 
-Given $ \mu_{t-1}, \Sigma_{t-1}, u_t, z_t $
-
-Prediction step:
-$$ 
-\bar \mu_t = g(\mu_{t-1}, u_t) \\
-\bar \Sigma_t = G_t \Sigma_{t-1} G_t^T + R_t \\
-$$
-
-Correction step:
-$$
-K_t = \bar \Sigma_t H_t^T ( H_t \bar \Sigma_t H_t^T + Q_t)^{-1} \\
-\mu_t = \bar \mu_t + K_t (z_t - h_t (\bar \mu_t ) \\
-\Sigma_t = ( I - K_t H_t ) \bar \Sigma_t \\
-$$
-
-Return $ \mu_t, \Sigma_t $
+![ekf-slam](https://www.dropbox.com/s/9h5ahlmewpxbr62/ekf_slam.png?dl=1)
 
 
-### EKF SLAM
+## State representation
 
-Apply EKF on SLAM: Estimate robot pose and landmarks location
+Assuming known correspondences, the state space (robot pose and n landmarks in 2D space) is
 
- - Assume known coresspondence
-
-
-
-
-State
 $$
 x_t = (x, y, \theta, m_{1,x}, m_{1,y}, \dots, m_{n, x}, m_{n, y})
 $$
 
 
-State representation
+Probablistic representation (assuming Gaussian distribution)
 
 $$
 \mu = 
@@ -120,9 +108,8 @@ $$
 x \\
 m \\
 \end{pmatrix}
-$$
-
-
+$$,
+and 
 $$
 \Sigma = 
 \begin{pmatrix}
@@ -131,29 +118,45 @@ $$
 \end{pmatrix}
 $$
 
-### EKF SLAM: Filter Cycle
+## EKF SLAM: Filter Cycle
 
-#### State prediction
+### State prediction (P step)
 
+Predict the expected robot state.
+
+Robot is supposed to only change its own position and not the position of the landmarks, so the part of the state changes:
 $x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
 
-#### Measurement prediction
-$m$ , $\Sigma_{mm}$
-
-#### Measurement
-
-#### Data association
-
-Associate observation prediction with the measured observation
-
-Assumed easy, but could be difficult in practice
-
-#### Update 
+The computation complexity $O(n)$
 
 
-### EKF SLAM: Concrete Example
+### Measurement prediction (C step)
 
-Setup
+Predict the expected measurement given the belief of the robot state.
+$\mu_m$ , $\Sigma_{mm}$
+
+### Measurement (C step)
+
+Take the real measurement
+
+### Data association (C step)
+
+Associate the obtained measurement (of the landmarks) with the corresponding predicted landmark observation.
+
+(Assumed to be given, but could be difficult in practice.)
+
+### Update (C step)
+
+Compute the difference between the obtained measurement and the predicted measurement, and update the state (mean and covariance matrix) via the Kalman Gain
+
+The complete mean and covariance changes
+
+The computation complexity $O(n^2)$
+
+
+## EKF SLAM: Concrete Example
+
+### Setup
  - Robot moves in the 2D plane
  - Velocity-based motion model
  - Robot observes point landmarks
@@ -161,9 +164,63 @@ Setup
  - Known data association
  - Known number of landmarks 
 
-Initializaion
+### Robot motion
+
+Standard Odometry Model in 2D
+
+$$
+
+\begin{pmatrix}
+x' \\
+y' \\
+\theta' \\
+\end{pmatrix}
+= 
+\begin{pmatrix}
+x \\
+y \\
+\theta \\
+\end{pmatrix}
++
+
+\begin{pmatrix}
+- \frac{v_t}{w_t} \sin\theta + \frac{v_t}{w_t} \cos\theta \\
+\frac{v_t}{w_t} \cos\theta - \frac{v_t}{w_t} \sin\theta \\
+w_t \Delta t
+\end{pmatrix}
+
+
+$$
+
+
+### Range-Bearing Observation
+
+Standard Odometry Model in 2D with range-beraing observation $z_t^i = (r_t^i, \phi_t^i)^T$
+
+Computing the observed location of landmark j with the estimated robot’s location and the relative measurement: 
+
+$$
+\begin{pmatrix}
+\bar \mu_{j,x} \\
+\bar \mu_{j,y} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\bar \mu_{t,x} \\
+\bar \mu_{t,y} \\
+\end{pmatrix}
++
+\begin{pmatrix}
+r_t^i \cos(\phi_t^i + \bar \mu_{t, \theta}) \\
+r_t^i \sin(\phi_t^i + \bar \mu_{t, \theta}) \\
+\end{pmatrix}
+$$
+
+
+### State Initializaion
+
+ - 2n+3 dimensions state (Robot pose + n landmarks)
  - Robot starts in its own reference frame (all n landmarks unknown)
- - 2n+2 dimensions
 
 $$
 \mu_0 = 
@@ -200,4 +257,9 @@ $$
  - Measurement update in a single step requires only one full belief update 
  - Always normalize the angular components
  - You may not need to create the matrices $ F $  explicitly (e.g., in Octave)
+
+
+advantages and disadvantages
+computational efficiency
+
 
