@@ -243,19 +243,99 @@ $$
 $$
 
 
+## Prediction step
+
 ![EKF SLAM Prediction](https://www.dropbox.com/s/d7h076z1e0l9omu/ekf_slam_prediction.png?dl=1)
+
+(2) Use $F_x$ to map from 3 to 2n+3 dim because the motion model $g$ only affects the robot motion and not the landmarks. 
+
+(3) Predict mean with Robot motion model $g$ 
+
+(4) Jacobian 
+$$
+G_t = 
+\begin{pmatrix}
+G_t^x & 0 \\ 
+0 & I \\ 
+\end{pmatrix} 
+$$
+
+$$
+G_t^x = \frac{\partial g}{\partial (x, y, \theta)^T}
+$$
+
+(5) Predict covariance with Jacobian and motion noise
+
+## Correction step
+
+ - Known data association
+ - Compute the Jacobian of $h$
+ - Proceed with computing the Kalman gain
+
+
 
 ![EKF SLAM Correction Step 1](https://www.dropbox.com/s/chetpivpl1esoth/ekf_slam_correction_1.png?dl=1)
 
+(6) Known measurement noise
+
+(7) For each of the observed feature
+
+(8) $c_t^i = j$: i-th measurement at time t observes the landmark with index j
+
+(9-11) Initialize landmark if unobserved
+
+(12-14) Compute the expected observation according to the current estimation with $\hat z_t^i = h(\bar \mu_t)$
+
+
 ![EKF SLAM Correction Step 2](https://www.dropbox.com/s/r2mbbg9i25fjiih/ekf_slam_correction_2.png?dl=1)
 
-## Implementation Notes
+(15) Use $F_{x,j}$ to map from 2 to 2n+3 dim for the j-th landmark 
+
+(16) Compute Jacobian of measurement model: 
+$$
+H_t^i = \frac{\partial h(\bar \mu_t)}{\partial \bar \mu_t}
+$$.
+Note that Jocabian for j-th landmark is low-dimensional: $(2 \times 5)$, $(r, \phi)$ with respect to $(x, y, \theta, m_{j, x}, m_{j, y})$.
+
+(17) Compute the Kalman gain
+
+(18-19) Correct the state mean and covariance with Kalman gain
+
+
+*Implementation Notes*
  - Measurement update in a single step requires only one full belief update 
  - Always normalize the angular components
  - You may not need to create the matrices $ F $  explicitly (e.g., in Octave)
 
 
-advantages and disadvantages
-computational efficiency
+# Complexity
 
+ - $O(n^3)$ depends only on the measurement dimensionality
+ - Cost per step: dominated by the number of landmarks $O(n^2)$
+ - Memory consumption $O(n^2)$
+ - The EKF becomes computationally intractable for large maps! -> Sparse Extended Information Filter (SEIF) SLAM
+
+
+# In the limit...
+ - In the limit, the landmark estimates become fully correlated (cannot be ignored) -> SEIF SLAM
+ - In the limit, the covariance associated with any single landmark location estimate is determined only by the initial covariance in the vehicle location estimate. The determinant of any sub-matrix of the map covariance matrix decreases monotonically. That's why New landmarks are initialized with maximum uncertainty.
+ 
+
+# Loop closing
+
+ - Loop closing means recognizing an already mapped area.
+ - Could fail with data association under
+ 	+ high ambiguity
+ 	+ possible environment symmetries
+ - Uncertainties collapse after a loop closure (whether the closure was correct or not)!
+ - Wrong loop closures lead to filter divergence
+
+
+# Summary
+
+ - Convergence proof for the linear Gaussian case
+ - Can diverge if non-linearities are large (and the reality is non-linear...)
+ - Can deal with single mode
+ - Successful in medium-scale scene
+ - Approximations exists to reduce the computational complexity
 
