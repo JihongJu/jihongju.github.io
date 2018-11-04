@@ -316,9 +316,19 @@ Note that Jocabian for j-th landmark is low-dimensional: $(2 \times 5)$, $(r, \p
  - The EKF becomes computationally intractable for large maps! -> Sparse Extended Information Filter (SEIF) SLAM
 
 
-# In the limit...
- - In the limit, the landmark estimates become fully correlated (cannot be ignored) -> SEIF SLAM
- - In the limit, the covariance associated with any single landmark location estimate is determined only by the initial covariance in the vehicle location estimate. The determinant of any sub-matrix of the map covariance matrix decreases monotonically. That's why New landmarks are initialized with maximum uncertainty.
+# Correlation
+
+The correlation between the robot’s pose and the landmarks becomes fully correlated and cannot be ignored. Assuming independence generates too optimistic estimates of the uncertainty.
+ -> SEIF SLAM
+
+![covmat-update](https://www.dropbox.com/s/e81g6gs5gwzey9e/covmat_update.gif?dl=1)
+
+
+# Uncertainties
+
+The determinant of any sub-matrix of the map covariance matrix decreases monotonically as robot moves and new observations made. That's why new landmarks are initialized with maximum uncertainty.
+
+In the limit, the covariance associated with any single landmark location estimate is determined only by the initial covariance in the vehicle location estimate.
  
 
 # Loop closing
