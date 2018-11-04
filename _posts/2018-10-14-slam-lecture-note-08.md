@@ -29,13 +29,15 @@ Information matrix can be interpreted as MRF, where nodes denotes random variabl
 ![infomat-as-mrf](https://www.dropbox.com/s/d8hqlve9ar7tttw/infomat_graph.png?dl=1)
 
  - $\Omega_{ij}$ tells the strength of a link between node $i$ and $j$ 
- - $\Omega_{ij}=0$ indicate conditional independence of the two random variables, i.e. missing links
+ - $\Omega_{ij}=0$ (i.e. two nodes are not connected) indicate conditional independence of the two random variables given the rest of the variables are known. They could still be dependent of each other if the other variables are unknown.
 
 
 ## Effect of measurement update
 
 ![measure-update](https://www.dropbox.com/s/1l45uzyl0s70woo/measurement_update.gif?dl=1)
 
+
+The two landmarks $m1$, $m2$ are independent of each other given the robot pose is known.
 
 ## Effect of motion update
 
@@ -45,6 +47,7 @@ Information matrix can be interpreted as MRF, where nodes denotes random variabl
 
 # Sparsification
 
+Sparsitification is an approximate. You lose accuracy in change of computational efficiency.
 
 ![sparsification](https://www.dropbox.com/s/839q7zh0fklcpkb/sparsification.gif?dl=1)
 
@@ -65,17 +68,61 @@ SEIF SLAM conducts a sparsification steps in each iteration
 
 ![seif-slam](https://www.dropbox.com/s/3z0vzljxjq3j8ye/seif_slam.png?dl=1)
 
+Now we maintain $\tilde \xi_t$, $\tilde \Omega_t$ and $\mu_t$.
 
-Two nodes are not connected: 
- - The two randon variables are conditionally independent of each other given we know the rest of the variables.
- - They could still be dependent of each other if the other variables are unknown.
-
-
-The two landmarks $m1$, $m2$ are independent of each other given I know the robot pose.
+The corrected mean is estimated after the measurement update of the canonical parameters $\xi_t$ and $\Omega_t$
 
 
-Sparsitification is an approximate. Lose accuracy in change of computational efficiency if you do that.
+## Motion Update
+
+![motion-update](https://www.dropbox.com/s/qsoxtjvz7lhmhdm/seif_motion_update.png?dl=1)
+
+(2-4) $F_x$, $\delta$, $\Delta$ are the same as those in EKF SLAM.
+
+(5-9) Predict the information matrix
+
+$$
+\begin{split}
+\bar \Omega_t & = \Sigma_t^{-1} \\
+              & = [G_t \Omega_{t-1}^{-1} G_t^{-1} + R_t] ^ {-1} = [\Phi^{-1} + R_t] ^ {-1} = [\Phi^{-1} + F_x^{T} R_t^x F_x] ^ {-1} \\
+              & = \Phi_t - \kappa_t \text{(Matrix Inversion Lemma)}
+\end{split}
+$$
+
+Computing $\Omega_t$ is constant complexity if $\Phi_t$ is sparse.
+
+(5-7) Computing $\Phi_t$ is also constant complexity if $\Omega_{t-1}$ is sparse.
+
+Using $G_t^{-1} = (I + F_x^T \delta F_x)^{-1} = \dots = I + \Psi_t$,
+
+$$
+\begin{split}
+\Phi_t & = [G_t \Omega_{t-1} G_t^T]^{-1} \\
+       & = [G_t^T]^{-1} \Omega_{t-1} G_t^{-1} \\
+       & = (I + \Psi_t) \Omega_{t-1} (I + \Psi_t^T) \\
+       & = \Omega_{t-1} + \lambda_t
+\end{split}
+$$
+
+where $\Psi_t$ is mapped to $(2n+3, 2n+3)$ from a $(3, 3)$ matrix by $F_x$, and $\lambda_t$ is all zeros except for a constant number of entries.
 
 
+(10) Predict the information vector in constant time (the first line below is not):
 
-buffer for activate landmarks
+$$
+\begin{split}
+\xi_t & = \bar \Omega_t \bar \mu_t = \bar \Omega_t (\mu_{t-1} + F_x^T \delta) \quad \text{using} \quad \mu_{t-1} = \Omega_{t-1}^{-1} \xi_{t-1} \\
+
+      & = \bar \Omega_t \Omega_{t-1}^{-1} \xi_{t-1} + \bar \Omega_t F_x^T \delta \\
+      & = \dots \\
+      & = \xi_{t-1} + (\lambda_t - \kappa_t) \mu_{t-1} + \bar \Omega_t F_x^T \delta 
+\end{split}
+$$
+
+where $\lambda_t$ and $\kappa_t$ are both sparse, and $F_x^T \delta$ is also sparse.
+
+(11) Predict the mean (the same as EKF SLAM)
+
+
+## Measurement update
+
