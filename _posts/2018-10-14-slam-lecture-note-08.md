@@ -121,8 +121,39 @@ $$
 
 where $\lambda_t$ and $\kappa_t$ are both sparse, and $F_x^T \delta$ is also sparse.
 
-(11) Predict the mean (the same as EKF SLAM)
+(11) Predict the mean (just the same as EKF SLAM)
 
 
 ## Measurement update
+
+![seif-measurement-update-1](https://www.dropbox.com/s/ribvwzf0dor29kc/seif_measurement_update_1.png?dl=1)
+![seif-measurement-update-2](https://www.dropbox.com/s/6jtu9owtxh0zoo1/seif_measurement_update_2.png?dl=1)
+
+__Caution! $\mu_t$ on L0 and L12 are supposed to be $\bar \mu_t$__.
+
+(1-11) Compute the expected observation $\hat z_t^i$ and the corresponding measurement Jacobian $H_t^i$ for each of the observed feature $i$, which is associated to landmark $j$. Again this step is the same as EKF SLAM.
+
+(12-13) Compute the corrected information matrix and information vector. This step is different from EKF SLAM but the same as EIF SLAM. Note that the computation is constant for each $i$ because everything is sparse.
+
+## Recovering the mean
+
+Remind that the mean $\mu_t$ was needed in the previous motion update step. And it will also be needed in the sparsification step later on.
+
+However, computing the corrected mean $\mu = \Omega^{-1} \xi$ is costly. We therefore $approximate$ the corrected mean. 
+
+Find an approximated mean (constant dimension) that maximize the probability density function.
+
+$$
+\begin{split}
+\hat \mu & = \underset{\mu}{\mathrm{argmax}} p(\mu) \\
+         & = \underset{\mu}{\mathrm{argmax}} \exp(-\frac{1}{2} \mu^T \Omega \mu + \xi^T \mu)
+\end{split}
+$$
+
+__To be discussed later.__
+
+
+## Sparsification
+
+Sparsification ensures a sparse information matrix as assumed by the previous steps.
 
