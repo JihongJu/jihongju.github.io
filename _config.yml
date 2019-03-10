@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: "Jihong Ju's Blog"
-header-img: "img/Optical-illusion-checkerboard-bw.svg"
+header-img: "img/pexels-photo-1258740.jpeg"
 email: ir.jihong.ju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     "".
