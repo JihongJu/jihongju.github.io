@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Homogeneous coordinates
-author: Cyrill Stachniss's SLAM course
+author: Course Note SLAM (Cyrill Stachniss)
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Sparse Extended Information Filter
-author: Cyrill Stachniss SLAM course
+author: Course Note SLAM (Cyrill Stachniss)
 
 ---
 

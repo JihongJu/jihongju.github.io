@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Representation - Bayesian Networks
-author: Daphne Koller Probablistic Graphical Models course
+author: Course Note Probablistic Graphical Models (Daphne Koller)
 
 ---
 

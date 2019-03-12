@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Extended Kalman Filter
-author: Cyrill Stachniss SLAM course
+author: Course Note SLAM (Cyrill Stachniss)
 
 ---
 

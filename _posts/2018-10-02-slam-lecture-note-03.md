@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Introduction to Bayes Filter
-author: Cyrill Stachniss's SLAM course
+author: Course Note SLAM (Cyrill Stachniss)
 
 ---
 
