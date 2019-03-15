@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Extended Information Filter
-author: Course Note SLAM (Cyrill Stachniss)
+subtitle: Course Note SLAM (by Cyrill Stachniss)
+author: Jihong Ju
 
 ---
 

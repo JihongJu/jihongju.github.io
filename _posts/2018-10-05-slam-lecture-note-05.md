@@ -1,7 +1,8 @@
 ---
 layout: post
 title: EKF SLAM
-author: Course Note SLAM (Cyrill Stachniss)
+subtitle: Course Note SLAM (by Cyrill Stachniss)
+author: Jihong Ju
 
 ---
 
@@ -117,7 +118,6 @@ $$
 \Sigma_{mx} & \Sigma_{mm} \\
 \end{pmatrix}
 $$
-
 # EKF SLAM: Filter Cycle
 
 ## 1. State prediction (P step)
@@ -167,7 +167,6 @@ The computation complexity $O(n^2)$
 ## Robot motion
 
 Standard Odometry Model in 2D
-
 $$
 \begin{pmatrix}
 x' \\
@@ -189,13 +188,11 @@ w_t \Delta t
 \end{pmatrix}
 $$
 
-
 ## Range-Bearing Observation
 
 Standard Odometry Model in 2D with range-beraing observation $z_t^i = (r_t^i, \phi_t^i)^T$
 
 Computing the observed location of landmark j with the estimated robot’s location and the relative measurement: 
-
 $$
 \begin{pmatrix}
 \bar \mu_{j,x} \\
@@ -213,12 +210,10 @@ r_t^i \sin(\phi_t^i + \bar \mu_{t, \theta}) \\
 \end{pmatrix}
 $$
 
-
 ## State Initializaion
 
  - 2n+3 dimensions state (Robot pose + n landmarks)
  - Robot starts in its own reference frame (all n landmarks unknown)
-
 $$
 \mu_0 = 
 
@@ -242,7 +237,6 @@ $$
 \end{pmatrix}
 $$
 
-
 ## Prediction step
 
 ![EKF SLAM Prediction](https://www.dropbox.com/s/d7h076z1e0l9omu/ekf_slam_prediction.png?dl=1)
@@ -263,7 +257,6 @@ $$
 $$
 G_t^x = \frac{\partial g}{\partial (x, y, \theta)^T}
 $$
-
 (5) Predict covariance with Jacobian and motion noise
 
 ## Correction step
@@ -329,7 +322,7 @@ The correlation between the robot’s pose and the landmarks becomes fully corre
 The determinant of any sub-matrix of the map covariance matrix decreases monotonically as robot moves and new observations made. That's why new landmarks are initialized with maximum uncertainty.
 
 In the limit, the covariance associated with any single landmark location estimate is determined only by the initial covariance in the vehicle location estimate.
- 
+
 
 # Loop closing
 

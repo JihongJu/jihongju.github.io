@@ -1,14 +1,10 @@
 ---
 layout: post
 title: Sparse Extended Information Filter
-author: Course Note SLAM (Cyrill Stachniss)
+subtitle: Course Note SLAM (by Cyrill Stachniss)
+author: Jihong Ju
 
 ---
-
-
-* TOC
-{:toc}
-
 
 
 # Motivation
