@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Gaussian process regression
-subtitle: A Gaussian distribution over functions
 author: Jihong Ju
 
 ---
@@ -130,13 +129,13 @@ This kernel has the property of local smoothness because:
 
 Let
 $$
-S = \{ (x^{(i)}, y^{(i)})\}_1^m = (X, \vec{y})
+S = (X, \vec{y})
 $$
 be the training set of i.i.d. examples from an unknown distribution.
 
 Let 
 $$
-T = \{ (x_*^{(i)}, y_*^{(i)})\}_1^m = (X_*, \vec{y_*})
+T = (X_*, \vec{y_*})
 $$
 be the test set of i.i.d. examples from the same distribution.
 
@@ -148,7 +147,7 @@ y^{(i)} = f(x^{(i)}) + \epsilon^{(i)}
 $$
 
 
-where $\epsilon \sim \mathcal({0, \sigma^2})$ models a random noise with an independent Gaussian distribution.
+where $\epsilon \sim \mathcal({0, \sigma^2})$ models the stochastic noise by drawing i.i.d. examples from an independent Gaussian distribution.
 
 With a zero-mean Gaussian process prior 
 
