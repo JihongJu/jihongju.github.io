@@ -1,23 +1,26 @@
 ---
 layout: post
-title:  "Bayesian inference"
-author: "Jihong"
+title:  Introduction to Bayesian inference
+author: Jihong Ju
 ---
+
+
 
 ### Bayes Rule
 
-Before we talk about Bayesian inference, let us first quickly recap the Bayes rule. The Bayes Rule describes the probability of a hypothesis based on the given evidence. It is often written in a format with conditional probability as follows:
+Before we talk about Bayesian inference, let us first quickly refresh ourselves with the Bayes rule. Bayes rule says the conditional probability of a hypothesis $H$ given the observed evidence $E$ follows:
 
-$$p(H|E) = \frac{p(E|H)p(H)}{p(E)}$$
+$$
+p(H|E) = \frac{p(E|H)p(H)}{p(E)}
+$$
+
 
 where
 
-- $$H$$ is any _hypothesis_ whose probability might be affected by the evidence $$E$$
-- $$E$$ is the _evidence_, i.e. data observed, that might affect the probability of hypothesis $$H$$
-- $$p(H)$$ is the estimation of the probability of the hypothesis $$H$$ **before** the evidence $$E$$ is observed, a.k.a. the _prior probability_
-- $$p(H \vert E)$$ is the estimation of the probability of the hypothesis $$H$$ **after** the evidence $$E$$ is observed, a.k.a. the _posterior probability_
-- $$p(E \vert H)$$ is the probability of observing the evidence $$E$$ given the hypothesis $$H$$
-- $$p(E)$$ the __marginal likelihood__ which is the same for all the hypothesis.
+- $$p(H)$$ is the probability distribution of the hypothesis $H$ _before_ the evidence $$E$$ is observed, a.k.a. the **prior probability**
+- $$p(H \vert E)$$ is the probability distribution of $H$ _after_ $$E$$ is observed, a.k.a. the **posterior probability**
+- $$p(E \vert H)$$ is the probability distribution of $$E$$ given the hypothesis $H$, a.k.a. **the likelihood**
+- $$p(E)​$$ the __marginal likelihood__ which is the same for all the hypothesis.
 
 
 ### Bayesian inference

@@ -1,16 +1,14 @@
 ---
 layout: post
 title: Representation - Bayesian Networks
-author: Course Note Probablistic Graphical Models (Daphne Koller)
+subtitle: Course Note Probabilistic Graphical Models (by Daphne Koller)
+author: Jihong Ju
 
 ---
 
-* TOC
-{:toc}
+# Bayesian network
 
-## Reasoning
-
-A Bayesian network example
+An example
 
 ![student-grade](https://ermongroup.github.io/cs228-notes/assets/img/grade-model.png)
 

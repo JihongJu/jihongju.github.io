@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Extended Kalman Filter
-author: Course Note SLAM (Cyrill Stachniss)
+subtitle: Course Note SLAM (by Cyrill Stachniss)
+author: JIhong Ju
 
 ---
 
@@ -131,7 +132,7 @@ Given $ \mu_{t-1}, \Sigma_{t-1}, u_t, z_t $
 
 Prediction step
 
-$$ 
+$$
 \bar \mu_t = A_t \mu_{t-1} + B_t u_t \\
 \bar \Sigma_t = A_t \Sigma_{t-1} A_t^T + R_t
 $$
@@ -230,7 +231,7 @@ Given $ \mu_{t-1}, \Sigma_{t-1}, u_t, z_t $
 
 Prediction step:
 
-$$ 
+$$
 \bar \mu_t = g(\mu_{t-1}, u_t) \\
 \bar \Sigma_t = G_t \Sigma_{t-1} G_t^T + R_t \\
 $$

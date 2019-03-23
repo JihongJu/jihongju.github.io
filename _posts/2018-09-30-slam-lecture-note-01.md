@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  Introduction to Robotic Mapping
-author: Course Note SLAM (Cyrill Stachniss)
+subtitle: Course Note SLAM (Cyrill Stachniss)
+author: Jihong Ju
 
 ---
 
