@@ -50,6 +50,8 @@ The real word is full of **uncertainty**, especially when we talk about robot pe
 ## Graphical models
 
 **Full SLAM** estimates the full robot's path and the map:
+
+
 $$
 p(x_{0:T}, m | z_{1:T}, u_{1:T})
 $$
@@ -60,20 +62,26 @@ $$
 
 
 
-**Online SLAM** seeks to recover only the most recent pose
+**Online SLAM** seeks to recover only the most recent pose:
+
+
 $$
 p(x_{t}, m | z_{1:t}, u_{1:t})
 $$
 
 
 
-![Graphical model of online SLAM](https://www.dropbox.com/s/zcl4egxe6trgx1i/online-slam.png?dl=1)
+It means marginalizing out the previous poses (recursively):
 
-Online SLAM means marginalizing out the previous poses (recursively)
 
 $$
 p(x_{t}, m | z_{1:t}, u_{1:t}) = \int_{x_0} ... \int_{x_{t-1}} p(x_{0:t}, m | z_{1:t}, u_{1:t}) dx_{t-1} ... dx_{0}
 $$
+
+
+![Graphical model of online SLAM](https://www.dropbox.com/s/zcl4egxe6trgx1i/online-slam.png?dl=1)
+
+
 
 
 
@@ -85,7 +93,7 @@ $$
 p(x_{t} | x_{t}-1, u_{t})
 $$
 
-__Standard Odometry Model__ 
+Example: Standard Odometry model
 
  - Robot moves $ (x, y, \theta) $ -> $ (x', y', \theta') $
 
@@ -101,7 +109,7 @@ $$
 p(z_{t} | x_{t})
 $$
 
-__Standard Odometry Model__
+Example: Standard Observation Model
 
 
 

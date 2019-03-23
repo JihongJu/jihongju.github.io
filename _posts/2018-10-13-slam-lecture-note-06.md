@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Unscent Kalman Filter
-author: Cyrill Stachniss SLAM course
+subtitle: Course Note SLAM (by Cyrill Stachniss)
+author: Jihong Ju
 
 ---
 

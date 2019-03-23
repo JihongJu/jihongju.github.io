@@ -2,7 +2,7 @@
 layout: post
 title: Extended Kalman Filter
 subtitle: Course Note SLAM (by Cyrill Stachniss)
-author: JIhong Ju
+author: Jihong Ju
 
 ---
 
