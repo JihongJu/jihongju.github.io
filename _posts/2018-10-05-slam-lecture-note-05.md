@@ -109,8 +109,7 @@ $$
 x \\
 m \\
 \end{pmatrix}
-$$,
-and 
+$$
 $$
 \Sigma = 
 \begin{pmatrix}
@@ -118,6 +117,9 @@ $$
 \Sigma_{mx} & \Sigma_{mm} \\
 \end{pmatrix}
 $$
+
+
+
 # EKF SLAM: Filter Cycle
 
 ## 1. State prediction (P step)
@@ -125,7 +127,7 @@ $$
 Predict the expected robot state.
 
  - Robot is supposed to only change its own position and not the position of the landmarks, so the part of the state changes:
-$x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
+    $x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
 
  - The computation complexity $O(n)$
 
@@ -182,17 +184,21 @@ y \\
 +
 
 \begin{pmatrix}
+
 - \frac{v_t}{w_t} \sin\theta + \frac{v_t}{w_t} \cos\theta \\
-\frac{v_t}{w_t} \cos\theta - \frac{v_t}{w_t} \sin\theta \\
-w_t \Delta t
+  \frac{v_t}{w_t} \cos\theta - \frac{v_t}{w_t} \sin\theta \\
+  w_t \Delta t
 \end{pmatrix}
 $$
 
+
+
 ## Range-Bearing Observation
-
-Standard Odometry Model in 2D with range-beraing observation $z_t^i = (r_t^i, \phi_t^i)^T$
-
-Computing the observed location of landmark j with the estimated robot’s location and the relative measurement: 
+Standard Odometry Model in 2D with range-bearing observation 
+$$
+z_t^i = (r_t^i, \phi_t^i)^T
+$$
+Computing the observed location of landmark j with the estimated robot’s location and the relative measurement:
 $$
 \begin{pmatrix}
 \bar \mu_{j,x} \\
@@ -210,10 +216,11 @@ r_t^i \sin(\phi_t^i + \bar \mu_{t, \theta}) \\
 \end{pmatrix}
 $$
 
-## State Initializaion
+## State Initialization
 
  - 2n+3 dimensions state (Robot pose + n landmarks)
  - Robot starts in its own reference frame (all n landmarks unknown)
+
 $$
 \mu_0 = 
 
@@ -224,6 +231,7 @@ $$
 0 \\
 \end{pmatrix}
 $$
+
 
 $$
 \Sigma_0 = 
@@ -245,7 +253,7 @@ $$
 
 (3) Predict mean with Robot motion model $g$ 
 
-(4) Jacobian 
+(4) Jacobian
 $$
 G_t = 
 \begin{pmatrix}
@@ -253,10 +261,10 @@ G_t^x & 0 \\
 0 & I \\ 
 \end{pmatrix} 
 $$
-
 $$
 G_t^x = \frac{\partial g}{\partial (x, y, \theta)^T}
 $$
+
 (5) Predict covariance with Jacobian and motion noise
 
 ## Correction step
@@ -284,18 +292,20 @@ $$
 
 (15) Use $F_{x,j}$ to map from 2 to 2n+3 dim for the j-th landmark 
 
-(16) Compute Jacobian of measurement model: 
+(16) Compute Jacobian of measurement model:
 $$
 H_t^i = \frac{\partial h(\bar \mu_t)}{\partial \bar \mu_t}
-$$.
+$$
+
+
 Note that Jocabian for j-th landmark is low-dimensional: $(2 \times 5)$, $(r, \phi)$ with respect to $(x, y, \theta, m_{j, x}, m_{j, y})$.
 
 (17) Compute the Kalman gain
 
 (18-19) Correct the state mean and covariance with Kalman gain
 
-
 *Implementation Notes*
+
  - Measurement update in a single step requires only one full belief update 
  - Always normalize the angular components
  - You may not need to create the matrices $ F $  explicitly (e.g., in Octave)
