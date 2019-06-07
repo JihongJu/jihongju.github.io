@@ -28,6 +28,8 @@ copyright_name: Jihong Ju
 
 timezone: Europe/Amsterdam
 
+google_tracking_id: UA-141669919-1
+
 # Build settings
 markdown: kramdown
 # mathjax: true
