@@ -141,6 +141,7 @@ $$
  - Known number of landmarks 
 
 **Robot motion** Standard Odometry Model in 2D
+
 $$
 \begin{pmatrix}
 x' \\
@@ -221,9 +222,9 @@ $$
 
 ![EKF SLAM Prediction](https://www.dropbox.com/s/d7h076z1e0l9omu/ekf_slam_prediction.png?dl=1)
 
-(2) Use $F_x$ to map from 3 dimension to 2n+3 dimension because the motion model $g$ only affects the robot motion and not the landmarks. 
+(2) Use $F_x​$ to map from 3 dimension to 2n+3 dimension because the motion model $g​$ only affects the robot motion and not the landmarks. 
 
-(3) Predict mean with Robot motion model $g$ 
+(3) Predict mean with Robot motion model $g​$ 
 
 (4) Jacobian
 $$
@@ -231,7 +232,7 @@ G_t =
 \begin{pmatrix}
 G_t^x & 0 \\ 
 0 & I \\ 
-\end{pmatrix} 
+\end{pmatrix}
 $$
 $$
 G_t^x = \frac{\partial g}{\partial (x, y, \theta)^T}
