@@ -115,13 +115,13 @@ $$
 
 ## EKF SLAM: Filter Cycle
 
-1. **State prediction (P step)**: Predict the expected robot state.
-   - Robot is supposed to only change its own position and not the position of the landmarks, so the only changed part of the state are: $x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
-   - Computation complexity $O(n)​$
+1. **Robot pose prediction (P step)**: Predict the expected robot state given the previous robot pose and the robot odometry
+   - Robot is only supposed to change its own pose and not the landmarks positions, so the parts of the state to change at this step are: $x$ , $\Sigma_{xx}$, $\Sigma_{mx}$, $\Sigma_{xm}$
+   - Computation complexity $O(n)$
 
 
-2. **Measurement prediction (P step)**: Predict the expected measurement given the belief of the robot state.
-   $\mu_m$ , $\Sigma_{mm}​$
+2. **Measurement prediction (C step)**: Predict the expected measurement given the belief of the robot state.
+   - Parts of the state to update: $\mu_m$ , $\Sigma_{mm}$
 3. **Measurement (C step)**: Take the real measurement
 4. **Data association (C step)**: Associate the obtained measurement (of the landmarks) with the corresponding predicted landmark observation.
 5. **Update (C step)**: Compute the difference between the obtained measurement and the predicted measurement, and update the state (mean and covariance matrix) via the Kalman Gain.
@@ -162,10 +162,10 @@ y \\
 \end{pmatrix}
 $$
 
+where $v_t$ is the translation velocity, $w_t$  the rotation velocity and $\Delta t$ the time interval between time steps.
 
 **Range-Bearing Observation**
-Standard Odometry Model in 2D with range-bearing observation 
-
+Standard Odometry Model in 2D with range-bearing observation
 $$
 z_t^i = (r_t^i, \phi_t^i)^T
 $$
@@ -222,9 +222,9 @@ $$
 
 ![EKF SLAM Prediction](https://www.dropbox.com/s/d7h076z1e0l9omu/ekf_slam_prediction.png?dl=1)
 
-(2) Use $F_x​$ to map from 3 dimension to 2n+3 dimension because the motion model $g​$ only affects the robot motion and not the landmarks. 
+(2) Use $F_x$ to map from 3 dimension to 2n+3 dimension because the motion model $g$ only affects the robot motion and not the landmarks. 
 
-(3) Predict mean with Robot motion model $g​$ 
+(3) Predict mean with Robot motion model $g$ 
 
 (4) Jacobian
 $$
@@ -234,8 +234,10 @@ G_t^x & 0 \\
 0 & I \\ 
 \end{pmatrix}
 $$
+
+where 
 $$
-G_t^x = \frac{\partial g}{\partial (x, y, \theta)^T}
+G_t^x = \frac{\partial (x', y', \theta ')^T}{\partial (x, y, \theta)^T} 
 $$
 
 (5) Predict covariance with Jacobian and motion noise
