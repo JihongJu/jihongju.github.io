@@ -3,6 +3,7 @@ layout: post
 title: Homogeneous coordinates
 subtitle: Course Note SLAM (by Cyrill Stachniss)
 author: Jihong Ju
+redirect_from: "/2018/10/01/slam-lecture-note-02/"
 
 ---
 

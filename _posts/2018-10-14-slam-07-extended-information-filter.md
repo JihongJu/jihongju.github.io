@@ -3,6 +3,7 @@ layout: post
 title: Extended Information Filter
 subtitle: Course Note SLAM (by Cyrill Stachniss)
 author: Jihong Ju
+redirect_from: "/2018/10/14/slam-lecture-note-07/"
 
 ---
 

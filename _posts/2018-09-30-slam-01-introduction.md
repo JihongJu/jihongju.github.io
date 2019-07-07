@@ -3,6 +3,7 @@ layout: post
 title:  Introduction to SLAM
 subtitle: Course Note SLAM (Cyrill Stachniss)
 author: Jihong Ju
+redirect_from: "/2018/09/30/slam-lecture-note-01/"
 
 ---
 

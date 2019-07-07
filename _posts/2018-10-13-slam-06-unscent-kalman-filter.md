@@ -3,6 +3,7 @@ layout: post
 title: Unscent Kalman Filter
 subtitle: Course Note SLAM (by Cyrill Stachniss)
 author: Jihong Ju
+redirect_from: "/2018/10/13/slam-lecture-note-06/"
 
 ---
 
