@@ -70,5 +70,6 @@ $$
 As it turns out, maximizing entropy is a dual problem of maximum likelihood. The solution sets of the two problems intersect at a single point which solves both problems.
 
 
+References:
 
-
+1. [Amnon Shashua, Intro. to Machine Learning Lecture 3: Maximum Likelihood / Maximum Entropy Duality](http://www.cs.huji.ac.il/~shashua/papers/class3-ML-MaxEnt.pdf)
