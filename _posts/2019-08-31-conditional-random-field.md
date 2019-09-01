@@ -7,23 +7,27 @@ author: Jihong Ju
 
 In problems where we have a set of observed variables **X** and a set of target variables **Y**: 
 
-Observed variables **X**={xi|i=1,2,...,M}
+Observed variables: **X**={xi|i=1,2,...,M}
 
-Target variables **Y**={yj|j=1,2,...,N}
+Target variables: **Y**={yj|j=1,2,...,N}
 
-The goal is to model the conditional distribution P(**Y**|**X**). There are many application of such a problem in practice, like [image segmentation](https://en.wikipedia.org/wiki/Image_segmentation), [Part-Of-Speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), etc.
+The goal is to model the conditional distribution P(**Y**\|**X**). 
+
+
+
+There are many application of such a problem in practice, like [image segmentation](https://en.wikipedia.org/wiki/Image_segmentation), [Part-Of-Speech tagging](https://en.wikipedia.org/wiki/Part-of-speech_tagging), etc. For these problems, we can model the conditional distribution P(**Y**\|**X**) as a Conditional Random Field.
 
 
 
 ## Condition Random Field as Markov Network
 
-Conditional Random Fields (CRFs) model the conditional distribution P(**Y**|**X**) and can be represented by a special form of Markov Network (Figure 1).
+Conditional Random Fields (CRFs) can be represented by a special form of Markov Network (Figure 1).
 
 ![crf-as-markov-network](https://www.dropbox.com/s/m1fa744wr6uz8i7/crf-as-markov-network.png?dl=1)
 
 Figure 1. An example Markov Network representation of Conditional Random Field. [1] The circles and the double circles denote the the target variables Y and the observed variables X respectively. The links refer to the dependencies among the random variables. 
 
-As we can see from Figure 1, there is no edge among observed variables. This doesn't mean the observed variables **X** are independent of each other. The dependencies are just not interesting in representing the conditional distribution P(**Y**|**X**).
+As we can see from Figure 1, there is no edge among observed variables. This doesn't mean the observed variables **X** are independent of each other. The dependencies are just not interesting in representing the conditional distribution P(**Y**\|**X**).
 
 
 
