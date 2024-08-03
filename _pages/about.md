@@ -27,3 +27,17 @@ __FeedbackFruits__
 
 __DelftRobotics__ (now Fizyr)
  - Research Intern, *Feb 2016 - Jul 2016*
+
+
+Education
+---
+
+__Delft University of Technology__
+ - M.S. in Computer Science, *Sep 2015 - Jun 2017*
+
+
+__The University of Manchester__
+ - M.S. in Physics, *Sep 2013 - Jun 2015*
+
+__Shandong University__
+ - B.S. in Physics, *Sep 2010 - Jun 2014*

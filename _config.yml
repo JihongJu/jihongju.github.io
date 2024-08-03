@@ -24,6 +24,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: jihongju
 medium_username: jihongju
+scholar_username: NwbkoewAAAAJ&hl=en
 linkedin_username: jihongju
 twitter_username: jujihong
 email_username: ir.jihong.ju@gmail.com
