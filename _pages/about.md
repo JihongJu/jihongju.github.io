@@ -7,4 +7,23 @@ permalink: /about/
 Jihong Ju
 ---
 
-Received the M.Sc. degree in Computer Science from [TU Delft](https://www.tudelft.nl/) in 2017. Interned at [DelftRobotics (now Fizyr)](https://www.linkedin.com/company/fizyr/), [FeedbackFruits](https://www.linkedin.com/company/feedbackfruits/), and [IBM](https://www.linkedin.com/company/ibm/). Now works at [TomTom](https://www.linkedin.com/company/tomtom/), developing HD Maps for Autonomous Driving.
+{{site.description}}
+
+
+Experiences
+---
+
+__Qualcomm, XR Labs__
+ - Computer Vision Engineer, *Jun 2022 - Present*
+
+__TomTom, Autonomous Driving__
+ - Computer Vision Engineer, *Sep 2017 - May 2022*
+
+__IBM__
+ - Research Intern, *Sep 2016 - Aug 2017*
+
+__FeedbackFruits__
+ - Machine Learning Engineer (Part-time), *Jul 2016 - May 2017*
+
+__DelftRobotics__ (now Fizyr)
+ - Research Intern, *Feb 2016 - Jul 2016*

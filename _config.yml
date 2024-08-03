@@ -17,7 +17,9 @@ title: "Jihong Ju's Blog"
 header-img: "img/pexels-photo-1258740.jpeg"
 email: ir.jihong.ju@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-    "".
+    I bring innovative research to cutting-edge AR/VR products.
+    In particular, my work focuses on real-time 3D reconstruction and spatial understanding using edge computing.
+    Hope to see the virtual and physical 3D worlds seamlessly blended for an even better immersive experience!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: jihongju
