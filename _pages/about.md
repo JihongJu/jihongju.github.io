@@ -7,6 +7,9 @@ permalink: /about/
 Jihong Ju
 ---
 
+
+<img src="{{ site.baseurl }}/img/roldal.jpg" width="384" height="384">
+
 {{site.description}}
 
 

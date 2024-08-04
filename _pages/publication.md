@@ -18,15 +18,19 @@ __Ju, J.__, Tseng, C. W., Bailo, O., Dikov, G., & Ghafoorian, M. (2023).
 
 ![dgrecon]({{ site.baseurl }}/img/dgrecon.png)
 
+---
+
 Langer, F., __Ju, J.__, Dikov, G., Reitmayr, G., & Ghafoorian, M. (2024). [FastCAD: Real-Time CAD Retrieval and Alignment from Scans and Videos. In ECCV.](https://arxiv.org/pdf/2403.15161)
 
 ![fastcad]({{ site.baseurl }}/img/fastcad.png)
 
+---
 
 Nguyen, D. K., __Ju, J.__, Booij, O., Oswald, M. R., & Snoek, C. G. (2022). [Boxer: Box-attention for 2d and 3d transformers. In CVPR.](https://openaccess.thecvf.com/content/CVPR2022/papers/Nguyen_BoxeR_Box-Attention_for_2D_and_3D_Transformers_CVPR_2022_paper.pdf)
 
 ![boxer]({{ site.baseurl }}/img/boxer.png)
 
+---
 
 Corbato, C. H., Bharatheesha, M., Van Egmond, J., __Ju, J.__, & Wisse, M. (2018). [Integrating different levels of automation: Lessons from winning the amazon robotics challenge 2016. IEEE Trans. Ind. Inform.](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8304784)
 
